@@ -87,8 +87,6 @@ class App:
         self.message_password_entry = tk.Entry(self.decrypt_window, show="*")
         self.pixel_location_password_label = tk.Label(self.decrypt_window, text="Pixel Location Password:")
         self.pixel_location_password_entry = tk.Entry(self.decrypt_window, show="*")
-        self.len_encoded_message_label = tk.Label(self.decrypt_window, text="Length of Encoded Message:")
-        self.len_encoded_message_entry = tk.Entry(self.decrypt_window)
         self.decrypt_button = tk.Button(self.decrypt_window, text="Decrypt", command=self.decrypt)
         self.back_button = tk.Button(self.decrypt_window, text="Back", command=self.show_initial_menu)
 
@@ -100,10 +98,8 @@ class App:
         self.message_password_entry.grid(row=1, column=1, columnspan=2, padx=5, pady=5, sticky='ew')
         self.pixel_location_password_label.grid(row=2, column=0, sticky='w', padx=5, pady=5)
         self.pixel_location_password_entry.grid(row=2, column=1, columnspan=2, padx=5, pady=5, sticky='ew')
-        self.len_encoded_message_label.grid(row=3, column=0, sticky='w', padx=5, pady=5)
-        self.len_encoded_message_entry.grid(row=3, column=1, columnspan=2, padx=5, pady=5, sticky='ew')
-        self.decrypt_button.grid(row=4, column=0, padx=5, pady=5)
-        self.back_button.grid(row=4, column=1, padx=5, pady=5, sticky='e')
+        self.decrypt_button.grid(row=3, column=0, padx=5, pady=5)
+        self.back_button.grid(row=3, column=1, padx=5, pady=5, sticky='e')
 
     def browse_input_image(self):
         # get file path using file dialog
@@ -142,8 +138,7 @@ class App:
 
             # show success message box with pixel_location_password and len_encoded_message
             messagebox.showinfo("Success",
-                                f"Encryption complete!\nPixel Location Password: {pixel_location_password}"
-                                f"\nLength of Encoded Message: {len_encoded_message}")
+                                f"Encryption complete!\nPixel Location Password: {pixel_location_password}_{len_encoded_message}")
 
             # reset input fields
             self.input_image_entry.delete(0, tk.END)
@@ -160,11 +155,9 @@ class App:
         # get message password
         message_password = self.message_password_entry.get()
 
-        # get pixel location password
-        pixel_location_password = self.pixel_location_password_entry.get()
-
-        # get length of encoded message
-        len_encoded_message = self.len_encoded_message_entry.get()
+        # get pixel location password and length of encoded message
+        pixel_location_password, len_encoded_message = self.pixel_location_password_entry.get().split('_')
+        len_encoded_message = int(len_encoded_message)
 
         try:
             len_encoded_message = int(len_encoded_message)
@@ -197,7 +190,6 @@ class App:
         self.input_image_entry.delete(0, tk.END)
         self.message_password_entry.delete(0, tk.END)
         self.pixel_location_password_entry.delete(0, tk.END)
-        self.len_encoded_message_entry.delete(0, tk.END)
 
     def quit(self):
         self.master.quit()
