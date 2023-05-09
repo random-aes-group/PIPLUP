@@ -73,6 +73,9 @@ The graphical user interface (GUI) for the PIPLUP program.
 ```sh
 python gui.py
 ```
+### Main Window
 ![](demo/gui_main.png)
+### Encryption Mode
 ![](demo/gui_encrypt.jpg)
+### Decryption Mode
 ![](demo/gui_decrypt.jpg)
