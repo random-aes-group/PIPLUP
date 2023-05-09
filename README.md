@@ -14,7 +14,7 @@ cli.py encrypt - Encrypt a secret message into an input image using AES and LSB-
 ### Usage
 
 ```sh
-cli.py encrypt INPUT_IMAGE_PATH OUTPUT_IMAGE_PATH MESSAGE MESSAGE_PASSWORD
+python cli.py encrypt INPUT_IMAGE_PATH OUTPUT_IMAGE_PATH MESSAGE MESSAGE_PASSWORD
 ```
 
 ### Description
@@ -44,7 +44,7 @@ cli.py decrypt - Decrypt a secret message from an input stego-image using AES an
 ### Usage
 
 ```sh
-cli.py decrypt OUTPUT_IMAGE_PATH MESSAGE_PASSWORD PIXEL_LOCATION_PASSWORD LEN_ENCODED_MESSAGE
+python cli.py decrypt OUTPUT_IMAGE_PATH MESSAGE_PASSWORD PIXEL_LOCATION_PASSWORD LEN_ENCODED_MESSAGE
 ```
 
 ### Description
@@ -65,3 +65,14 @@ Decrypt a secret message from an input stego-image using AES and LSB-Steganograp
 
 Some longer secret message
 ```
+
+## GUI Program
+The graphical user interface (GUI) for the PIPLUP program.
+### Usage
+
+```sh
+python gui.py
+```
+![](demo/gui_main.png)
+![](demo/gui_encrypt.jpg)
+![](demo/gui_decrypt.jpg)
